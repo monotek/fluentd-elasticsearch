@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-# working
+# working old
 gem 'fluentd', '~>1.1.3'
 gem 'activesupport', '~>5.1.4'
 gem 'fluent-plugin-kubernetes_metadata_filter', '~>1.0.0'
@@ -11,7 +11,7 @@ gem 'fluent-plugin-prometheus', '~>1.0.1'
 gem 'fluent-plugin-multi-format-parser', '~>1.0.0'
 gem 'oj', '~>3.3.1.0'
 
-
+# new
 # gem 'fluentd', '<=1.1.3'
 # gem 'activesupport', '~>5.2.1'
 # gem 'fluent-plugin-kubernetes_metadata_filter', '~>2.1.2'
