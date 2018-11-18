@@ -1,5 +1,3 @@
-From: https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/fluentd-elasticsearch/fluentd-es-image
-
 # Collecting Docker Log Files with Fluentd and Elasticsearch
 This directory contains the source files needed to make a Docker image
 that collects Docker container log files using [Fluentd][fluentd]
