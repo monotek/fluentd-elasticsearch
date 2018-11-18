@@ -38,7 +38,7 @@ RUN BUILD_DEPS="make gcc g++ libc6-dev ruby-dev libffi-dev curl" \
                      ruby \
     && echo 'gem: --no-document' >> /etc/gemrc \
     && gem install --file Gemfile \
-    && curl -s https://raw.githubusercontent.com/openshift/origin-aggregated-logging/master/fluentd/lib/filter_parse_json_field/lib/filter_parse_json_field.rb > /etc/fluent/plugin/filter_parse_json_field.rb
+    && curl -s https://raw.githubusercontent.com/openshift/origin-aggregated-logging/master/fluentd/lib/filter_parse_json_field/lib/filter_parse_json_field.rb > /etc/fluent/plugin/filter_parse_json_field.rb \
     && apt-get purge -y --auto-remove \
                      -o APT::AutoRemove::RecommendsImportant=false \
                      $BUILD_DEPS \
