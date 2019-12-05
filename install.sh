@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Copyright 2017 The Kubernetes Authors.
 #
@@ -32,7 +32,7 @@ apt-get install -y --no-install-recommends $BUILD_DEPS ca-certificates libjemall
 
 # ruby install
 echo 'gem: --no-document' >> /etc/gemrc 
-gem install --file Gemfile 
+gem install --file Gemfile
 
 # cleanup
 apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false $BUILD_DEPS
