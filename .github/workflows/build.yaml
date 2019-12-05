@@ -11,10 +11,4 @@ jobs:
       - name: debug
         run: printenv | sort
       - name: build & push docker image
-        run: |
-          set -e
-          echo "Build Docker image with tag / travis build number ${{ TRAVIS_BUILD_NUMBER }} for DockerHubs ${{ DOCKER_REGISTRY }}/${{ GITHUB_USERNAME }}/${{ DOCKER_REPOSITORY }} repo"
-          echo "${{ DOCKER_PASSWORD }}" | docker login -u "${{ DOCKER_USERNAME }}" --password-stdin
-          docker build --pull --no-cache -t ${{ secrets.DOCKER_REGISTRY }}/${{ secrets.GITHUB_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:latest -t ${{ secrets.DOCKER_REGISTRY }}/${{ secrets.GITHUB_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:${{ secrets.BUILD_NUMBER }} .
-          docker push ${{ secrets.DOCKER_REGISTRY }}/${{ secrets.GITHUB_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:${{ secrets.BUILD_NUMBER }}
-          docker push ${{ secrets.DOCKER_REGISTRY }}/${{ secrets.GITHUB_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:latest
+        run: build.sh
