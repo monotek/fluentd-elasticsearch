@@ -27,7 +27,7 @@ COPY install.sh /tmp/install.sh
 COPY Gemfile /Gemfile
 
 RUN chmod +x /tmp/install.sh && \
-    sleep 2 #travis ci workaround && \
+    sleep 2 && \
     /bin/bash -l -c /tmp/install.sh && \
     rm /tmp/*
 
