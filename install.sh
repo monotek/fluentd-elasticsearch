@@ -41,7 +41,6 @@ rm -rf \
    /var/cache/debconf/* \
    /var/lib/apt/lists/* \
    /var/log/* \
-   /tmp/* \
    /var/tmp/*
 
 # Ensure fluent has enough file descriptors
