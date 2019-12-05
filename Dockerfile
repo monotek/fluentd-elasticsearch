@@ -27,7 +27,8 @@ COPY install.sh /tmp/install.sh
 COPY Gemfile /Gemfile
 
 RUN chmod +x /tmp/install.sh && \
-    /bin/bash -l -c /tmp/install.sh
+    /bin/bash -l -c /tmp/install.sh && \
+    rm /tmp/*
 
 # Copy the Fluentd configuration file for logging Docker container logs.
 COPY fluent.conf /etc/fluent/fluent.conf
