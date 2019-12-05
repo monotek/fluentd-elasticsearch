@@ -11,4 +11,4 @@ jobs:
       - name: debug
         run: printenv | sort
       - name: build & push docker image
-        run: build.sh
+        run: .github/workflows/build.sh
