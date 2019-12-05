@@ -11,4 +11,8 @@ jobs:
       - name: debug
         run: printenv | sort
       - name: build & push docker image
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: .github/workflows/build.sh
+
