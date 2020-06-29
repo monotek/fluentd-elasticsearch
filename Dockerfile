@@ -33,7 +33,7 @@ COPY Gemfile /Gemfile
 SHELL ["/bin/bash", "-e", "-o", "pipefail", "-c"]
 
 RUN apt-get update && \
-    apt-get upgrade && \
+    apt-get dist-upgrade -y && \
     apt-get install -y --no-install-recommends g++ gcc make && \
     echo 'gem: --no-document' >> /etc/gemrc && \
     gem install --file Gemfile
