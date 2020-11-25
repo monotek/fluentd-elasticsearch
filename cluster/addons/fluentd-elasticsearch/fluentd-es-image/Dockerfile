@@ -36,6 +36,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends g++ gcc make && \
     rm -rf /var/lib/apt/lists/* && \
     echo 'gem: --no-document' >> /etc/gemrc && \
+    # hadolint ignore=DL3028
     gem install --file Gemfile
 
 FROM ruby:2.7-slim-buster
@@ -48,7 +49,7 @@ COPY entrypoint.sh /entrypoint.sh
 COPY --from=builder /usr/local/bundle/ /usr/local/bundle 
 
 SHELL ["/bin/bash", "-e", "-o", "pipefail", "-c"]
-
+# hadolint ignore=DL3008
 RUN apt-get update && \
     apt-get install -y --no-install-recommends libjemalloc2 && \
     apt-get clean -y && \
