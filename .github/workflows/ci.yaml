@@ -17,16 +17,16 @@ jobs:
           check_filenames: true
           check_hidden: true
 
-  super-linter:
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
-      - name: Lint Code Base
-        uses: github/super-linter@v3
-        env:
-          DEFAULT_BRANCH: master
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  # super-linter:
+  #   runs-on: ubuntu-20.04
+  #   steps:
+  #     - name: Checkout Code
+  #       uses: actions/checkout@v2
+  #     - name: Lint Code Base
+  #       uses: github/super-linter@v3
+  #       env:
+  #         DEFAULT_BRANCH: master
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   docker-build:
     runs-on: ubuntu-20.04
@@ -39,8 +39,7 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          #context: ./cluster/addons/fluentd-elasticsearch/fluentd-es-image/
+          context: ./cluster/addons/fluentd-elasticsearch/fluentd-es-image
           file: ./cluster/addons/fluentd-elasticsearch/fluentd-es-image/Dockerfile
-          #file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
           push: false
