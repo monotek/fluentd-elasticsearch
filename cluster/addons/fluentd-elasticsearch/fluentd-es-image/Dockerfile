@@ -34,9 +34,9 @@ SHELL ["/bin/bash", "-e", "-o", "pipefail", "-c"]
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends g++ gcc make && \
+    rm -rf /var/lib/apt/lists/* && \
     echo 'gem: --no-document' >> /etc/gemrc && \
     gem install --file Gemfile
-
 
 FROM ruby:2.7-slim-buster
 
@@ -52,7 +52,7 @@ SHELL ["/bin/bash", "-e", "-o", "pipefail", "-c"]
 RUN apt-get update && \
     apt-get install -y --no-install-recommends libjemalloc2 && \
     apt-get clean -y && \
-    ulimit -n 65536 && \    
+    ulimit -n 65536 && \
     rm -rf \
         /var/cache/debconf/* \
         /var/lib/apt/lists/* \
