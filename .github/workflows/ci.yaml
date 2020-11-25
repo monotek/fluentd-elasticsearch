@@ -41,6 +41,6 @@ jobs:
         with:
           context: ./cluster/addons/fluentd-elasticsearch/fluentd-es-image
           #file: cluster/addons/fluentd-elasticsearch/fluentd-es-image/Dockerfile
-          file: ''
+          file: ' '
           platforms: linux/amd64,linux/arm64
           push: false
