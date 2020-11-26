@@ -31,9 +31,8 @@ ARG DEBIAN_FRONTEND=noninteractive
 COPY Gemfile /Gemfile
 
 SHELL ["/bin/bash", "-e", "-o", "pipefail", "-c"]
-
+# hadolint ignore=DL3008
 RUN apt-get update && \
-    # hadolint ignore=DL3028
     apt-get install -y --no-install-recommends g++ gcc make && \
     rm -rf /var/lib/apt/lists/* && \
     echo 'gem: --no-document' >> /etc/gemrc && \
