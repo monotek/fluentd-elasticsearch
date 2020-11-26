@@ -4,29 +4,29 @@ on:
   pull_request:
 
 jobs:
-  # codespell:
-  #   name: codespell
-  #   runs-on: ubuntu-20.04
-  #   steps:
-  #     - name: Checkout Code
-  #       uses: actions/checkout@v2
-  #     - name: Codespell
-  #       uses: codespell-project/actions-codespell@master
-  #       with:
-  #         skip: .git
-  #         check_filenames: true
-  #         check_hidden: true
+  codespell:
+    name: codespell
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Codespell
+        uses: codespell-project/actions-codespell@master
+        with:
+          skip: .git
+          check_filenames: true
+          check_hidden: true
 
-  # super-linter:
-  #   runs-on: ubuntu-20.04
-  #   steps:
-  #     - name: Checkout Code
-  #       uses: actions/checkout@v2
-  #     - name: Lint Code Base
-  #       uses: github/super-linter@v3
-  #       env:
-  #         DEFAULT_BRANCH: master
-  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  super-linter:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Lint Code Base
+        uses: github/super-linter@v3
+        env:
+          DEFAULT_BRANCH: master
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   docker-build:
     runs-on: ubuntu-20.04
