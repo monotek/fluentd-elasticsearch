@@ -31,12 +31,11 @@ ARG DEBIAN_FRONTEND=noninteractive
 COPY Gemfile /Gemfile
 
 SHELL ["/bin/bash", "-e", "-o", "pipefail", "-c"]
-# hadolint ignore=DL3008
+# hadolint ignore=DL3028 ignore=DL3008
 RUN apt-get update && \
     apt-get install -y --no-install-recommends g++ gcc make && \
     rm -rf /var/lib/apt/lists/* && \
     echo 'gem: --no-document' >> /etc/gemrc && \
-    # hadolint ignore=DL3028
     gem install --file Gemfile
 
 FROM ruby:2.7-slim-buster
