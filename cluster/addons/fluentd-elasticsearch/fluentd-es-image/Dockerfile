@@ -24,13 +24,14 @@
 # 3. Remove build dependencies.
 # 4. Cleanup leftover caches & files.
 
-FROM ruby:2.7-slim-buster as builder
+FROM ruby:3.0-slim-buster as builder
 
 ARG DEBIAN_FRONTEND=noninteractive
 
 COPY Gemfile /Gemfile
 
 SHELL ["/bin/bash", "-e", "-o", "pipefail", "-c"]
+
 # hadolint ignore=DL3008,DL3028
 RUN apt-get update && \
     apt-get install -y --no-install-recommends g++ gcc make && \
@@ -38,7 +39,7 @@ RUN apt-get update && \
     echo 'gem: --no-document' >> /etc/gemrc && \
     gem install --file Gemfile
 
-FROM ruby:2.7-slim-buster
+FROM ruby:3.0-slim-buster
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -48,6 +49,7 @@ COPY entrypoint.sh /entrypoint.sh
 COPY --from=builder /usr/local/bundle/ /usr/local/bundle 
 
 SHELL ["/bin/bash", "-e", "-o", "pipefail", "-c"]
+
 # hadolint ignore=DL3008
 RUN apt-get update && \
     apt-get install -y --no-install-recommends libjemalloc2 && \
@@ -62,11 +64,6 @@ RUN apt-get update && \
 
 # Expose prometheus metrics.
 EXPOSE 80
-
-ENV LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2
-
-# for the arm64 container use
-#ENV LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libjemalloc.so.2
 
 # Start Fluentd to pick up our config that watches Docker container logs.
 CMD ["/entrypoint.sh"]
