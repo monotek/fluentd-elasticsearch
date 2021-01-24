@@ -11,4 +11,3 @@ gem 'fluent-plugin-multi-format-parser', '1.0.0'
 gem 'fluent-plugin-prometheus', '1.8.5'
 gem 'fluent-plugin-systemd', '1.0.2'
 gem 'oj', '3.11.0'
-
