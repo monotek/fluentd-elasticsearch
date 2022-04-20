@@ -24,7 +24,7 @@
 # 3. Remove build dependencies.
 # 4. Cleanup leftover caches & files.
 
-FROM ruby:2.7-slim-buster as builder
+FROM ruby:slim as builder
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -39,7 +39,7 @@ RUN apt-get update && \
     echo 'gem: --no-document' >> /etc/gemrc && \
     gem install --file Gemfile
 
-FROM ruby:2.7-slim-buster
+FROM ruby:slim
 
 ARG DEBIAN_FRONTEND=noninteractive
 

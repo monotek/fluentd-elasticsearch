@@ -4,26 +4,16 @@ on:
   pull_request:
 
 jobs:
-  codespell:
-    name: codespell
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
-      - name: Codespell
-        uses: codespell-project/actions-codespell@master
-        with:
-          skip: .git
-          check_filenames: true
-          check_hidden: true
-
   super-linter:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
       - name: Lint Code Base
-        uses: github/super-linter@v4
+        uses: github/super-linter/slim@v4
         env:
           DEFAULT_BRANCH: master
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -32,16 +22,41 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
-      - name: Build
+
+      - name: Login to quay.io container registry
+        uses: docker/login-action@v1 
+        with:
+          registry: quay.io
+          username: ${{ secrets.QUAY_USER }}
+          password: ${{ secrets.QUAY_TOKEN }}
+
+      - name: Docker metadata action
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: |
+            quay.io/monotek/fluentd-elasticsearch
+          tags: |
+            type=raw,value=latest
+            type=raw,value=${{ github.run_number }}
+            type=sha,format=long
+
+      - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
         with:
           context: .
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
-          push: false
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+
+      - name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
