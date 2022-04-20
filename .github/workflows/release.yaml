@@ -33,7 +33,6 @@ jobs:
         with:
           images: |
             fluentd_elasticsearch/fluentd
-            monotek/fluentd-elasticsearch
           tags: |
             type=ref,event=tag
             type=semver,pattern=v{{version}}
