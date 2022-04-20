@@ -32,7 +32,7 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: |
-            fluentd_elasticsearch/fluentd
+            quay.io/fluentd_elasticsearch/fluentd
           tags: |
             type=ref,event=tag
             type=semver,pattern=v{{version}}
