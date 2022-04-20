@@ -5,7 +5,7 @@ on:
     branches:
       - master
     tags:
-      - '*'
+      - 'v*'
 
 jobs:
   docker-build-push:
@@ -38,8 +38,7 @@ jobs:
             type=semver,pattern=v{{version}}
             type=semver,pattern=v{{major}}.{{minor}}
             type=semver,pattern=v{{major}}
-            type=sha,format=long
-
+ 
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
