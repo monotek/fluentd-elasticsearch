@@ -1,0 +1,9 @@
+version: 2
+updates:
+  - package-ecosystem: "bundler"
+    directory: "/"
+    schedule: weekly
+    
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule: weekly
