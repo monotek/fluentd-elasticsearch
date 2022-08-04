@@ -1,9 +1,15 @@
+---
 version: 2
 updates:
   - package-ecosystem: "bundler"
     directory: "/"
-    schedule: weekly
-    
+    schedule:
+      interval: "weekly"
+      time: "09:00"
+      timezone: "Europe/Berlin"
   - package-ecosystem: "docker"
     directory: "/"
-    schedule: weekly
+    schedule:
+      interval: "weekly"
+      time: "09:00"
+      timezone: "Europe/Berlin"
