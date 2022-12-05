@@ -12,4 +12,4 @@ jobs:
       - name: Auto-merge
         uses: ahmadnassri/action-dependabot-auto-merge@v2
         with:
-          github-token: ${{ secrets.mytoken }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
