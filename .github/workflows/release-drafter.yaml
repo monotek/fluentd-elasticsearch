@@ -1,14 +1,14 @@
 name: Release Drafter
 
+permissions:
+  contents: read
+
 on:
   push:
     branches:
       - master
   pull_request:
     types: [opened, reopened, synchronize]
-
-permissions:
-  contents: read
 
 jobs:
   update_release_draft:

@@ -1,5 +1,7 @@
 name: release
 
+permissions: read-all
+
 on:
   push:
     branches:
@@ -9,6 +11,10 @@ on:
 
 jobs:
   docker-build-push:
+    permissions:
+      contents: read
+      id-token: write
+      packages: write
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout Code

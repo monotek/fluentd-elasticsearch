@@ -65,5 +65,8 @@ RUN apt-get update && \
 # Expose prometheus metrics.
 EXPOSE 80
 
+#checkov:skip=CKV_DOCKER_2:We don't need Docker HEALTHCHECK in kubernetes
+#checkov:skip=CKV_DOCKER_3:root user used
+
 # Start Fluentd to pick up our config that watches Docker container logs.
 CMD ["/entrypoint.sh"]
