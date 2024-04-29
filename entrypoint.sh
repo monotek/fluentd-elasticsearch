@@ -21,7 +21,7 @@
 mkdir -p /var/log/journal
 
 # set ld preload
-if dpkg --print-architecture | grep -q amd64;then
+if dpkg --print-architecture | grep -q amd64; then
     export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2
 else
     export LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libjemalloc.so.2
