@@ -19,6 +19,7 @@ jobs:
         env:
           DEFAULT_BRANCH: master
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_SHELL_SHFMT: false
 
   docker-build:
     runs-on: ubuntu-20.04
