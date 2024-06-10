@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'activesupport', '7.1.3.3'
-gem 'elasticsearch-xpack', '7.17.10'
+gem 'elasticsearch-xpack', '7.17.11'
 gem 'fluentd', '1.16.5'
 gem 'fluent-plugin-concat', '2.5.0'
 gem 'fluent-plugin-detect-exceptions', '0.0.15'
