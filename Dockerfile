@@ -24,7 +24,7 @@
 # 3. Remove build dependencies.
 # 4. Cleanup leftover caches & files.
 
-FROM ruby:3.3.5-slim as builder
+FROM ruby:3.3.5-slim AS builder
 
 ARG DEBIAN_FRONTEND=noninteractive
 
