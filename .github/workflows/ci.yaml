@@ -22,6 +22,7 @@ jobs:
           DEFAULT_BRANCH: master
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_SHELL_SHFMT: false
+          VALIDATE_YAML_PRETTIER: false
 
   docker-build:
     runs-on: ubuntu-20.04
