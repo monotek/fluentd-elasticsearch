@@ -15,7 +15,7 @@ jobs:
       contents: read
       id-token: write
       packages: write
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -46,7 +46,6 @@ jobs:
         with:
           images: |
             ghcr.io/${{ github.repository_owner }}/fluentd-elasticsearch
-            quay.io/fluentd_elasticsearch/fluentd
           tags: |
             type=ref,event=branch
             type=ref,event=tag
