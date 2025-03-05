@@ -9,7 +9,7 @@ jobs:
   super-linter:
     permissions:
       statuses: write
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -25,7 +25,7 @@ jobs:
           VALIDATE_YAML_PRETTIER: false
 
   docker-build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
